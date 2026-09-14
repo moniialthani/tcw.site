@@ -21,7 +21,7 @@ export default function Philosophy() {
               id="philosophy-label"
               className="font-mono text-xs sm:text-sm tracking-widest uppercase text-[#0A0A0A] font-medium block"
             >
-              Plate the Dish
+              "Plate the Dish"
             </span>
 
             <p className="mt-6 text-sm text-[#0A0A0A]/60 font-sans leading-relaxed max-w-sm">
