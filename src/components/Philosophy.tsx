@@ -1,9 +1,6 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
 
 export default function Philosophy() {
-  const [lens, setLens] = useState<'raw' | 'clarity'>('clarity');
-
   return (
     <section
       id="philosophy"
@@ -11,7 +8,7 @@ export default function Philosophy() {
       className="relative w-full border-b border-[#0A0A0A] bg-[#F9F9F9]"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[80vh]">
-        {/* Left Column: Asymmetrical, spacious, with tiny technical label: "01 — Plate the Fish" */}
+        {/* Left Column: Asymmetrical, spacious, with technical label: "Plate the Dish" */}
         <div className="lg:col-span-4 p-8 sm:p-14 lg:p-20 border-b lg:border-b-0 lg:border-r border-[#0A0A0A] flex flex-col justify-between">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
@@ -32,43 +29,8 @@ export default function Philosophy() {
             </p>
           </motion.div>
 
-          {/* Interactive Editorial Lens Switcher */}
-          <div className="pt-12 sm:pt-16">
-            <div className="border border-[#0A0A0A] p-4 bg-white/50 backdrop-blur-xs">
-              <div className="flex items-center justify-between mb-3 text-[11px] font-mono tracking-wider uppercase text-[#0A0A0A]/60">
-                <span>Editorial Lens</span>
-                <span className="font-semibold text-[#0A0A0A]">
-                  {lens === 'clarity' ? 'Sharp Focus' : 'Raw State'}
-                </span>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  onClick={() => setLens('raw')}
-                  className={`py-2 text-xs font-mono tracking-wider uppercase transition-all cursor-pointer ${
-                    lens === 'raw'
-                      ? 'bg-[#0A0A0A] text-[#F9F9F9]'
-                      : 'border border-[#0A0A0A]/20 hover:border-[#0A0A0A] text-[#0A0A0A]'
-                  }`}
-                >
-                  Raw Material
-                </button>
-                <button
-                  onClick={() => setLens('clarity')}
-                  className={`py-2 text-xs font-mono tracking-wider uppercase transition-all cursor-pointer ${
-                    lens === 'clarity'
-                      ? 'bg-[#0A0A0A] text-[#F9F9F9]'
-                      : 'border border-[#0A0A0A]/20 hover:border-[#0A0A0A] text-[#0A0A0A]'
-                  }`}
-                >
-                  Intervention
-                </button>
-              </div>
-              <p className="mt-3 text-[11px] font-sans text-[#0A0A0A]/70 leading-normal">
-                {lens === 'clarity'
-                  ? 'We filter out redundant noise and isolate the sharpest positioning.'
-                  : 'You have deep craft, functioning systems, and genuine substance.'}
-              </p>
-            </div>
+          <div className="hidden lg:block pt-12 text-[11px] font-mono tracking-widest uppercase text-[#0A0A0A]/40">
+            [ 01 — Strategic Intervention ]
           </div>
         </div>
 
@@ -81,22 +43,22 @@ export default function Philosophy() {
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl"
           >
-            <blockquote
+            <div
               id="philosophy-body"
-              className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.2] tracking-[-0.02em] text-[#0A0A0A]"
+              className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] leading-[1.3] tracking-[-0.015em] text-[#0A0A0A] space-y-8"
             >
-              You already have the substance. The product exists, the foundation is built. You aren’t looking for someone to invent a new reality from scratch. You need someone to{' '}
-              <span className="italic underline decoration-1 underline-offset-8 decoration-[#0A0A0A]/30">
-                organize the raw material
-              </span>
-              , sharpen the thinking, and present it so it actually lands.{' '}
-              <span className="font-medium">We step in, structure the mess, and step out.</span>
-            </blockquote>
+              <p>
+                Not every project starts with a problem. Sometimes it’s a launch, sometimes it’s a new location, sometimes it’s a pivot into a different market. What ties them together is the same goal: making an impact, not just going through the motions. That’s where we come in, working alongside you with what’s already there and shaping it together to make the impact you’re after.
+              </p>
 
-            {/* Editorial Footnote */}
-            <div className="mt-12 sm:mt-16 pt-8 border-t border-[#0A0A0A]/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-mono tracking-wider text-[#0A0A0A]/60">
-              <span>Substance precedes form.</span>
-              <span>No agency retainer traps.</span>
+              <div className="pt-2">
+                <p className="italic text-xl sm:text-2xl md:text-3xl text-[#0A0A0A]/85 font-normal">
+                  Got the idea? Need help shaping the rest?
+                </p>
+                <p className="font-serif font-bold text-2xl sm:text-3xl md:text-4xl text-[#0A0A0A] mt-2">
+                  This could work.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
