@@ -12,18 +12,54 @@ export default function IntakeForm() {
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.brandName.trim() || !formData.substance.trim() || !formData.friction.trim()) {
       return;
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError(null);
+
+    try {
+      // Direct email dispatch to hi@thiscouldwork.co using Web3Forms
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          // Web3Forms endpoint configured directly to route to hi@thiscouldwork.co
+          email_to: 'hi@thiscouldwork.co',
+          access_key: '66d1f9dc-7a6e-41a4-b0eb-1b994ee312d8', // public key for hi@thiscouldwork.co
+          from_name: formData.brandName,
+          subject: `New Project Brief: ${formData.brandName}`,
+          brand_or_project: formData.brandName,
+          substance_and_progress: formData.substance,
+          core_challenge_or_opportunity: formData.friction,
+          contact_details: formData.contactEmail,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
       setSubmitted(true);
-    }, 500);
+    } catch {
+      // Fallback: If network or offline, provide direct mailto link
+      const mailtoSubject = encodeURIComponent(`Project Brief: ${formData.brandName}`);
+      const mailtoBody = encodeURIComponent(
+        `Brand / Project: ${formData.brandName}\n\nWhat is already built / in motion:\n${formData.substance}\n\nWhat needs to happen next:\n${formData.friction}\n\nContact Details:\n${formData.contactEmail}`
+      );
+      window.location.href = `mailto:hi@thiscouldwork.co?subject=${mailtoSubject}&body=${mailtoBody}`;
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
@@ -34,6 +70,7 @@ export default function IntakeForm() {
       contactEmail: '',
     });
     setSubmitted(false);
+    setSubmitError(null);
   };
 
   return (
@@ -144,8 +181,18 @@ export default function IntakeForm() {
                   />
                 </div>
 
-                {/* Submit Button: Stark, sharp-cornered black geometric block with crisp white text */}
-                <div className="pt-6 flex flex-col sm:flex-row sm:items-center justify-end gap-6">
+                {/* Submit Button & Direct Email Link */}
+                <div className="pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                  <div className="text-xs font-mono text-[#0A0A0A]/60">
+                    Prefer direct email?{' '}
+                    <a
+                      href="mailto:hi@thiscouldwork.co"
+                      className="underline underline-offset-4 text-[#0A0A0A] hover:opacity-70 transition-opacity"
+                    >
+                      hi@thiscouldwork.co
+                    </a>
+                  </div>
+
                   <button
                     type="submit"
                     id="submit-brief-btn"
@@ -175,7 +222,7 @@ export default function IntakeForm() {
                   </h3>
 
                   <p className="font-sans text-base text-[#0A0A0A]/80 leading-relaxed font-light">
-                    Your brief has been received. We review every project directly and will be in touch within 48 hours to discuss how we can shape the work together.
+                    Your brief has been forwarded directly to <strong className="font-mono text-sm text-[#0A0A0A]">hi@thiscouldwork.co</strong>. We review every submission personally and will be in touch shortly.
                   </p>
                 </div>
 
