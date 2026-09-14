@@ -1,0 +1,6 @@
+{
+  "name": "This Could Work",
+  "description": "Independent strategy and creative intervention for brands with direction, but no clarity.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
