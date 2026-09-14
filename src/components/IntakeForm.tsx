@@ -145,11 +145,7 @@ export default function IntakeForm() {
                 </div>
 
                 {/* Submit Button: Stark, sharp-cornered black geometric block with crisp white text */}
-                <div className="pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-                  <span className="text-xs font-mono text-[#0A0A0A]/50 tracking-wider">
-                    Direct principal review within 48 hours.
-                  </span>
-
+                <div className="pt-6 flex flex-col sm:flex-row sm:items-center justify-end gap-6">
                   <button
                     type="submit"
                     id="submit-brief-btn"
