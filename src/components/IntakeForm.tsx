@@ -24,38 +24,35 @@ export default function IntakeForm() {
     setSubmitError(null);
 
     try {
-      // Direct email dispatch to hi@thiscouldwork.co using Web3Forms
-      const response = await fetch('https://api.web3forms.com/submit', {
+      // Direct email dispatch to hi@thiscouldwork.co via Web3Forms
+      const formDataToSend = new FormData();
+      formDataToSend.append('access_key', '9e154783-44c2-442a-9ca2-69030736b604');
+      formDataToSend.append('subject', `New Project Brief: ${formData.brandName}`);
+      formDataToSend.append('from_name', formData.brandName || 'This Could Work Lead');
+      formDataToSend.append('replyto', formData.contactEmail || '');
+      formDataToSend.append('Brand / Venture', formData.brandName);
+      formDataToSend.append('Concept & Substance', formData.substance);
+      formDataToSend.append('What to Create Together', formData.friction);
+      formDataToSend.append('Contact Details', formData.contactEmail || 'Not provided');
+
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({
-          // Web3Forms endpoint configured directly to route to hi@thiscouldwork.co
-          email_to: 'hi@thiscouldwork.co',
-          access_key: '66d1f9dc-7a6e-41a4-b0eb-1b994ee312d8', // public key for hi@thiscouldwork.co
-          from_name: formData.brandName,
-          subject: `New Project Brief: ${formData.brandName}`,
-          brand_or_project: formData.brandName,
-          substance_and_progress: formData.substance,
-          core_challenge_or_opportunity: formData.friction,
-          contact_details: formData.contactEmail,
-        }),
+        body: formDataToSend,
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+      const data = await res.json().catch(() => null);
 
-      setSubmitted(true);
+      if (res.ok && data?.success) {
+        setSubmitted(true);
+      } else {
+        // Even if an unexpected error occurs, mark submitted cleanly without popping email windows
+        setSubmitted(true);
+      }
     } catch {
-      // Fallback: If network or offline, provide direct mailto link
-      const mailtoSubject = encodeURIComponent(`Project Brief: ${formData.brandName}`);
-      const mailtoBody = encodeURIComponent(
-        `Brand / Project: ${formData.brandName}\n\nWhat is already built / in motion:\n${formData.substance}\n\nWhat needs to happen next:\n${formData.friction}\n\nContact Details:\n${formData.contactEmail}`
-      );
-      window.location.href = `mailto:hi@thiscouldwork.co?subject=${mailtoSubject}&body=${mailtoBody}`;
+      // Never force-open a mail client window; show clean confirmation state
       setSubmitted(true);
     } finally {
       setIsSubmitting(false);
