@@ -46,5 +46,44 @@ body {
   animation-play-state: paused;
 }
 
+/* Arabic typography rules */
+html[lang="ar"],
+.lang-ar {
+  font-family: "IBM Plex Sans Arabic", "Inter", sans-serif;
+}
+
+/* Enforce Amiri for headings and large serif text in Arabic */
+html[lang="ar"] .font-serif,
+html[lang="ar"] .font-display,
+html[lang="ar"] .font-editorial,
+.lang-ar .font-serif,
+.lang-ar .font-display,
+.lang-ar .font-editorial {
+  font-family: "Amiri", Georgia, serif !important;
+}
+
+/* Enforce IBM Plex Sans Arabic for body, mono, sans, buttons, inputs in Arabic */
+html[lang="ar"] .font-sans,
+html[lang="ar"] .font-mono,
+.lang-ar .font-sans,
+.lang-ar .font-mono {
+  font-family: "IBM Plex Sans Arabic", -apple-system, sans-serif !important;
+}
+
+/* Arabic typographic rules:
+   1. Never apply letter-spacing (breaks joined Arabic letters)
+   2. Never use italics (causes disjointed or distorted glyphs) */
+html[lang="ar"] [dir="rtl"],
+html[lang="ar"] * {
+  letter-spacing: normal !important;
+}
+
+html[lang="ar"] [dir="rtl"] i,
+html[lang="ar"] [dir="rtl"] em,
+html[lang="ar"] [dir="rtl"] .italic,
+html[lang="ar"] .italic {
+  font-style: normal !important;
+}
+
 
 

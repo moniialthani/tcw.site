@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface MethodColumn {
   phase: string;
@@ -9,7 +10,7 @@ interface MethodColumn {
   takeaway: string;
 }
 
-const methods: MethodColumn[] = [
+const englishMethods: MethodColumn[] = [
   {
     phase: 'Phase I',
     duration: 'Collaborative',
@@ -33,8 +34,35 @@ const methods: MethodColumn[] = [
   },
 ];
 
+const arabicMethods: MethodColumn[] = [
+  {
+    phase: 'المرحلة الأولى',
+    duration: 'معًا',
+    headline: 'نقطة البداية',
+    body: 'نبدأ بحوار حول أفكارك وأهدافك، لنتفق معًا على اتجاه واضح للمشروع.',
+    takeaway: 'رؤية مشتركة وخطة واضحة.',
+  },
+  {
+    phase: 'المرحلة الثانية',
+    duration: 'بتركيز',
+    headline: 'بناء الفكرة',
+    body: 'هنا نبتعد قليلًا لنعمل بتركيز، ونحوّل ما اتفقنا عليه إلى مسودات وتصاميم واضحة، قبل أن نعود ونراجعها معك.',
+    takeaway: 'بنية أساسية وتصاميم أولية.',
+  },
+  {
+    phase: 'المرحلة الثالثة',
+    duration: 'على تواصل',
+    headline: 'اكتمال الصورة',
+    body: 'نجلس معك لنراجع المسودات، ونركّز على ما يحتاج إلى مزيد من العمل. وفي النهاية، تصبح الصورة كاملة، وبين يديك خطة واضحة لتطبيقها. وبين الاجتماعات الأساسية، نرحّب دائمًا بمكالمة سريعة إذا كان عندك ما تودّ مناقشته.',
+    takeaway: 'صورة كاملة وخطة عملية.',
+  },
+];
+
 export default function WaysOfWorking() {
   const [activeCol, setActiveCol] = useState<number | null>(null);
+  const { isArabic } = useLanguage();
+
+  const methods = isArabic ? arabicMethods : englishMethods;
 
   return (
     <section
@@ -46,16 +74,18 @@ export default function WaysOfWorking() {
       <div className="px-6 sm:px-12 lg:px-24 py-10 border-b border-[#0A0A0A] flex flex-col sm:flex-row sm:items-baseline justify-between gap-4">
         <div>
           <h2 className="font-serif text-3xl sm:text-4xl text-[#0A0A0A] font-normal tracking-tight">
-            The Process
+            {isArabic ? 'رحلتنا معًا' : 'The Process'}
           </h2>
         </div>
         <p className="text-xs sm:text-sm font-sans text-[#0A0A0A]/60 max-w-sm">
-          A structured rhythm that balances deep focus with open, honest collaboration.
+          {isArabic
+            ? 'نعطي كل مرحلة حقها: تركيز حين نحتاجه، وتعاون حين يهم.'
+            : 'A structured rhythm that balances deep focus with open, honest collaboration.'}
         </p>
       </div>
 
       {/* 3-Column Grid separated by vertical 1px hairline rules */}
-      <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#0A0A0A]">
+      <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x md:rtl:divide-x-reverse divide-[#0A0A0A]">
         {methods.map((method, idx) => (
           <motion.div
             key={method.phase}
@@ -75,10 +105,12 @@ export default function WaysOfWorking() {
             }`}
           >
             <div>
-              {/* Refined Roman Phase / Pace */}
+              {/* Phase / Pace label: no italic in Arabic */}
               <div className="flex items-center justify-between text-xs font-mono text-[#0A0A0A]/60 tracking-wider mb-8">
                 <span className="font-semibold text-[#0A0A0A]">{method.phase}</span>
-                <span className="italic">{method.duration}</span>
+                <span className={isArabic ? 'text-[#0A0A0A]/70 font-normal' : 'italic'}>
+                  {method.duration}
+                </span>
               </div>
 
               {/* Headline */}
@@ -95,7 +127,7 @@ export default function WaysOfWorking() {
             {/* Bottom takeaway with subtle interactive accent */}
             <div className="pt-8 mt-8 border-t border-[#0A0A0A]/15">
               <span className="text-[11px] font-mono tracking-wide text-[#0A0A0A]/50 block mb-1">
-                what we achieve
+                {isArabic ? 'ما نحققه' : 'what we achieve'}
               </span>
               <span className="text-xs font-sans text-[#0A0A0A] font-medium">
                 {method.takeaway}

@@ -1,8 +1,10 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function FloatingLogo() {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const { isArabic } = useLanguage();
 
   return (
     <motion.aside
@@ -11,7 +13,11 @@ export default function FloatingLogo() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       aria-label="Floating studio mark"
-      className="fixed top-18 right-5 sm:top-20 sm:right-10 md:right-16 z-50 pointer-events-auto select-none"
+      className={`fixed top-18 z-50 pointer-events-auto select-none ${
+        isArabic
+          ? 'left-5 sm:left-10 md:left-16'
+          : 'right-5 sm:right-10 md:right-16'
+      }`}
     >
       {/* Sticky Note Container with genuine background paper peel shadow */}
       <motion.div
@@ -25,10 +31,12 @@ export default function FloatingLogo() {
           className="absolute inset-0 bg-black/20 rounded-[2px] blur-[8px] translate-y-3 translate-x-1 pointer-events-none"
         />
 
-        {/* Paper curl shadow projecting behind the bottom-right corner */}
+        {/* Paper curl shadow projecting behind the corner */}
         <div
           aria-hidden="true"
-          className="absolute -bottom-1 -right-1 w-20 h-10 bg-black/25 blur-[7px] rotate-[10deg] pointer-events-none rounded-full"
+          className={`absolute -bottom-1 w-20 h-10 bg-black/25 blur-[7px] pointer-events-none rounded-full ${
+            isArabic ? '-left-1 -rotate-[10deg]' : '-right-1 rotate-[10deg]'
+          }`}
         />
 
         {/* The Actual Sticky Note Surface - Balanced clear crystal glass / sheer frosted vellum */}
@@ -39,8 +47,8 @@ export default function FloatingLogo() {
             className="absolute top-0 inset-x-0 h-3 bg-white/25 border-b border-black/[0.06] pointer-events-none"
           />
 
-          {/* Permanent Marker typography */}
-          <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-none p-2 select-none">
+          {/* Permanent Marker typography: Kept strictly in English as instructed */}
+          <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-none p-2 select-none" dir="ltr">
             <span
               style={{ fontFamily: "'Permanent Marker', cursive" }}
               className="text-[19px] sm:text-[22px] font-normal text-[#0A0A0A] tracking-tight leading-[1.05] -rotate-[2deg]"

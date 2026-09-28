@@ -1,6 +1,9 @@
 import { motion } from 'motion/react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Philosophy() {
+  const { isArabic } = useLanguage();
+
   return (
     <section
       id="philosophy"
@@ -21,16 +24,18 @@ export default function Philosophy() {
               id="philosophy-label"
               className="font-mono text-xs sm:text-sm tracking-widest uppercase text-[#0A0A0A] font-medium block"
             >
-              "Plate the Dish"
+              {isArabic ? 'تقديم الطبق' : '"Plate the Dish"'}
             </span>
 
             <p className="mt-6 text-sm text-[#0A0A0A]/60 font-sans leading-relaxed max-w-sm">
-              You bring the raw ingredients: your ideas, your product, your story. We add the right seasoning and plate a finished strategy your market will eat up.
+              {isArabic
+                ? 'عندك المكوّنات: فكرتك، منتجك، وقصتك. ونحن نضيف النكهة المناسبة ونقدّم لك طبقًا جاهزًا يفتح شهية السوق.'
+                : 'You bring the raw ingredients: your ideas, your product, your story. We add the right seasoning and plate a finished strategy your market will eat up.'}
             </p>
           </motion.div>
 
           <div className="hidden lg:block pt-12 text-[11px] font-mono tracking-widest uppercase text-[#0A0A0A]/40">
-            [ 01 — Strategic Intervention ]
+            {isArabic ? '[ 01 • استراتيجية وإبداع ]' : '[ 01 — Strategic Intervention ]'}
           </div>
         </div>
 
@@ -48,15 +53,26 @@ export default function Philosophy() {
               className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] leading-[1.3] tracking-[-0.015em] text-[#0A0A0A] space-y-8"
             >
               <p>
-                Not every project starts with a problem. Sometimes it’s a launch, sometimes it’s a new location, sometimes it’s a pivot into a different market. In every case, the idea isn't the hard part. Knowing what to do with it is. That’s where we come in, working alongside you with what’s already there and shaping it together to make the impact you’re after.
+                {isArabic
+                  ? 'بعض المشاريع لا تبدأ بمشكلة، بل بفرصة: إطلاق جديد، فرع جديد، أو دخول سوق مختلف. وفي كل الحالات، الفكرة ليست الجزء الصعب. الصعب هو أن تعرف ماذا تفعل بها. هنا يأتي دورنا. نبدأ من مكانك، ونكمل الطريق معك حتى تترك فكرتك أثرها.'
+                  : "Not every project starts with a problem. Sometimes it’s a launch, sometimes it’s a new location, sometimes it’s a pivot into a different market. In every case, the idea isn't the hard part. Knowing what to do with it is. That’s where we come in, working alongside you with what’s already there and shaping it together to make the impact you’re after."}
               </p>
 
               <div className="pt-2">
-                <p className="italic text-xl sm:text-2xl md:text-3xl text-[#0A0A0A]/85 font-normal">
-                  Got the idea? Need help shaping the rest?
+                <p
+                  className={
+                    isArabic
+                      ? 'text-xl sm:text-2xl md:text-3xl text-[#0A0A0A]/75 font-normal'
+                      : 'italic text-xl sm:text-2xl md:text-3xl text-[#0A0A0A]/85 font-normal'
+                  }
+                >
+                  {isArabic
+                    ? 'عندك فكرة؟ دعنا نكمل الباقي معًا.'
+                    : 'Got the idea? Need help shaping the rest?'}
                 </p>
+                {/* "This could work." kept in English in both versions as instructed */}
                 <p className="font-serif font-bold text-2xl sm:text-3xl md:text-4xl text-[#0A0A0A] mt-2">
-                  This could work.
+                  <bdi dir="ltr">This could work.</bdi>
                 </p>
               </div>
             </div>

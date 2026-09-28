@@ -1,3 +1,4 @@
+import { LanguageProvider } from './context/LanguageContext';
 import Navigation from './components/Navigation';
 import FloatingLogo from './components/FloatingLogo';
 import Hero from './components/Hero';
@@ -10,35 +11,37 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#F9F9F9] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F9F9F9] relative overflow-x-hidden">
-      {/* 00. Global Navigation */}
-      <Navigation />
+    <LanguageProvider>
+      <div className="min-h-screen bg-[#F9F9F9] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F9F9F9] relative overflow-x-hidden">
+        {/* 00. Global Navigation */}
+        <Navigation />
 
-      {/* 00. The Floating Sticky Note Logo (Persistent Fixed Top-Right Quadrant) */}
-      <FloatingLogo />
+        {/* 00. The Floating Sticky Note Logo (Persistent Fixed Top-Right Quadrant in LTR / Top-Left in RTL) */}
+        <FloatingLogo />
 
-      <main id="main-content">
-        {/* 01. The Hero */}
-        <Hero />
+        <main id="main-content">
+          {/* 01. The Hero */}
+          <Hero />
 
-        {/* Dynamic Kinetic Editorial Band */}
-        <KineticBand />
+          {/* Dynamic Kinetic Editorial Band */}
+          <KineticBand />
 
-        {/* 02. The Philosophy */}
-        <Philosophy />
+          {/* 02. The Philosophy */}
+          <Philosophy />
 
-        {/* 03. Ways of Working (The Architecture) */}
-        <WaysOfWorking />
+          {/* 03. Ways of Working (The Architecture) */}
+          <WaysOfWorking />
 
-        {/* 04. Engagement & Scope (Dark Mode Inversion) */}
-        <EngagementScope />
+          {/* 04. Engagement & Scope (Dark Mode Inversion) */}
+          <EngagementScope />
 
-        {/* 05. The Intake Form (Print Aesthetic) */}
-        <IntakeForm />
-      </main>
+          {/* 05. The Intake Form (Print Aesthetic) */}
+          <IntakeForm />
+        </main>
 
-      {/* 06. Global Footer */}
-      <Footer />
-    </div>
+        {/* 06. Global Footer */}
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }

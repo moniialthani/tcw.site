@@ -1,5 +1,15 @@
+import { useLanguage } from '../context/LanguageContext';
+
 export default function KineticBand() {
-  const statement = "VISION INTO EXECUTION  •  ORDER OUT OF CHAOS  •  CLARITY IN MOTION  •  OUTPUT OVER HOURS  •  INTENT INTO REALITY  •  ";
+  const { isArabic } = useLanguage();
+
+  const englishStatement =
+    'VISION INTO EXECUTION  •  ORDER OUT OF CHAOS  •  CLARITY IN MOTION  •  OUTPUT OVER HOURS  •  INTENT INTO REALITY  •  ';
+
+  const arabicStatement =
+    'من الرؤية إلى التنفيذ  •  نظام من قلب الفوضى  •  وضوح في كل خطوة  •  النتيجة قبل الساعات  •  من النية إلى الواقع  •  ';
+
+  const statement = isArabic ? arabicStatement : englishStatement;
 
   return (
     <div

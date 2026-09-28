@@ -1,10 +1,12 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function EngagementScope() {
   const [activePillar, setActivePillar] = useState<number>(0);
+  const { isArabic } = useLanguage();
 
-  const pillars = [
+  const englishPillars = [
     {
       title: 'The Sprint',
       timeframe: '< 2 weeks',
@@ -22,6 +24,26 @@ export default function EngagementScope() {
     },
   ];
 
+  const arabicPillars = [
+    {
+      title: 'السريع',
+      timeframe: 'أقل من أسبوعين',
+      detail: 'حين تحتاج إلى إنجاز شيء واحد بجودة عالية، وبسرعة.',
+    },
+    {
+      title: 'المعتاد',
+      timeframe: 'من 2 إلى 4 أسابيع',
+      detail: 'الخيار الأساسي لمعظم المشاريع، حين تتعدد الجوانب وتحتاج كلها أن تتصل ببعضها.',
+    },
+    {
+      title: 'المتعمّق',
+      timeframe: '4 أسابيع أو أكثر',
+      detail: 'الخيار الممتد، للمشاريع الكبيرة التي تحتاج وقتًا أطول لتكتمل.',
+    },
+  ];
+
+  const pillars = isArabic ? arabicPillars : englishPillars;
+
   return (
     <section
       id="scope"
@@ -36,9 +58,15 @@ export default function EngagementScope() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-10%' }}
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-          className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] tracking-[-0.03em] text-[#F9F9F9] leading-[0.98] font-normal"
+          className="font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] tracking-[-0.03em] text-[#F9F9F9] leading-[1.08] sm:leading-[0.98] font-normal"
         >
-          <span className="italic font-serif">Not</span> an Agency.
+          {isArabic ? (
+            <span>لسنا شركة إعلانات.</span>
+          ) : (
+            <>
+              <span className="italic font-serif">Not</span> an Agency.
+            </>
+          )}
         </motion.h2>
 
         {/* Body Copy: Constrained max-width for readability */}
@@ -50,7 +78,9 @@ export default function EngagementScope() {
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
           className="mt-10 sm:mt-14 font-sans text-lg sm:text-xl md:text-2xl text-[#F9F9F9]/85 font-light leading-relaxed max-w-3xl text-center"
         >
-          We operate entirely on fixed-fee scopes. No retainers, no hidden hours. We scope each project around what you need to achieve, and set the timeline together from day one.
+          {isArabic
+            ? 'نعمل بأسعار ثابتة لكل مشروع. لا عقود شهرية، ولا ساعات مخفية. يتم تصميم كل مشروع حول ما تريد تحقيقه، ونتفق معًا على مواعيده من اليوم الأول.'
+            : 'We operate entirely on fixed-fee scopes. No retainers, no hidden hours. We scope each project around what you need to achieve, and set the timeline together from day one.'}
         </motion.p>
 
         {/* Project Windows Boxes */}
@@ -63,15 +93,15 @@ export default function EngagementScope() {
         >
           {/* Small title above the boxes */}
           <span className="font-mono text-xs tracking-widest uppercase text-white/50 block mb-8">
-            Project Windows
+            {isArabic ? 'المدة المناسبة لمشروعك' : 'PROJECT WINDOWS'}
           </span>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-start">
             {pillars.map((item, idx) => (
               <button
                 key={item.title}
                 onClick={() => setActivePillar(idx)}
-                className={`p-6 text-left transition-all border cursor-pointer ${
+                className={`p-6 text-start transition-all border cursor-pointer ${
                   activePillar === idx
                     ? 'border-white bg-white/10'
                     : 'border-white/15 hover:border-white/40 bg-transparent'
