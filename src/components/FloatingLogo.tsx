@@ -1,9 +1,7 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function FloatingLogo() {
-  const [imageLoaded, setImageLoaded] = useState(false);
   const { isArabic } = useLanguage();
 
   return (
@@ -13,17 +11,26 @@ export default function FloatingLogo() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       aria-label="Floating studio mark"
-      className={`fixed top-18 z-50 pointer-events-auto select-none ${
+      className={`fixed top-18 z-50 pointer-events-auto select-none touch-none ${
         isArabic
           ? 'left-5 sm:left-10 md:left-16'
           : 'right-5 sm:right-10 md:right-16'
       }`}
     >
-      {/* Sticky Note Container with genuine background paper peel shadow */}
+      {/* Draggable Sticky Note Container - stays precisely where placed without snapback */}
       <motion.div
-        whileHover={{ rotate: 0, scale: 1.04, y: -3 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-        className="relative w-28 h-28 sm:w-32 sm:h-32 cursor-grab active:cursor-grabbing transform -rotate-[1.8deg] transition-all duration-300"
+        drag
+        dragMomentum={false}
+        dragElastic={0}
+        whileHover={{ scale: 1.03 }}
+        whileDrag={{
+          scale: 1.06,
+          rotate: 2,
+          cursor: 'grabbing',
+          zIndex: 60,
+          boxShadow: '0 20px 40px rgba(0,0,0,0.18)',
+        }}
+        className="relative w-28 h-28 sm:w-32 sm:h-32 cursor-grab active:cursor-grabbing transform -rotate-[1.8deg]"
       >
         {/* Physical Drop Shadow behind the note */}
         <div
