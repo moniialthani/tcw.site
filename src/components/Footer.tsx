@@ -18,7 +18,7 @@ export default function Footer() {
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           <div className="flex items-center gap-2">
             <span className="text-[#0A0A0A]/50 uppercase text-[11px]">
-              {isArabic ? 'للتواصل المباشر:' : 'DIRECT:'}
+              {isArabic ? 'البريد الإلكتروني:' : 'EMAIL:'}
             </span>
             <a
               id="footer-email-link"

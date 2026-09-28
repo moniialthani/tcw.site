@@ -199,7 +199,7 @@ export default function IntakeForm() {
                 {/* Submit Button & Direct Email Link */}
                 <div className="pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                   <div className="text-xs font-mono text-[#0A0A0A]/60">
-                    {isArabic ? 'تفضّل البريد الإلكتروني؟' : 'Prefer direct email?'}{' '}
+                    {isArabic ? 'للتواصل المباشر:' : 'Prefer direct email?'}{' '}
                     <a
                       href="mailto:hi@thiscouldwork.co"
                       className="underline underline-offset-4 text-[#0A0A0A] hover:opacity-70 transition-opacity"
