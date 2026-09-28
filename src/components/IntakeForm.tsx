@@ -85,10 +85,10 @@ export default function IntakeForm() {
               Work With Us
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#0A0A0A] font-normal tracking-tight">
-              Shape your next chapter.
+              Think this could work? Let's find out.
             </h2>
             <p className="mt-3 text-sm sm:text-base font-sans text-[#0A0A0A]/70 font-light max-w-xl">
-              We partner with ambitious founders and teams to clarify their brand and build decisive work.
+              Tell us where your brand is now and where you want it to be. We'll take it from there.
             </p>
           </div>
 
@@ -155,7 +155,7 @@ export default function IntakeForm() {
                     required
                     value={formData.friction}
                     onChange={(e) => setFormData({ ...formData, friction: e.target.value })}
-                    placeholder="What you need designed, written, or structured..."
+                    placeholder="What you'd like to figure out, build or bring to life..."
                     className="w-full bg-transparent border-0 border-b border-[#0A0A0A] rounded-none py-3 text-base sm:text-lg font-sans text-[#0A0A0A] placeholder:text-[#0A0A0A]/30 focus:outline-none focus:border-b-2 focus:border-[#0A0A0A] resize-none transition-all"
                   />
                 </div>

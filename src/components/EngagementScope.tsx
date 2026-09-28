@@ -8,17 +8,17 @@ export default function EngagementScope() {
     {
       title: 'The Sprint',
       timeframe: '< 2 weeks',
-      detail: 'High-impact turnarounds for distinct, immediate needs.',
+      detail: 'For when you need one thing done well, and soon.',
     },
     {
       title: 'The Standard',
       timeframe: '2–4 weeks',
-      detail: 'Our baseline timeline for intensive, focused project execution.',
+      detail: 'Our baseline timeline, built for briefs with multiple aspects that all need to connect.',
     },
     {
       title: 'The Deep Dive',
-      timeframe: 'Custom length',
-      detail: 'Scaled timelines tailored specifically for multi-layered, larger scopes.',
+      timeframe: '4+ weeks',
+      detail: 'Our extended timeline, built for larger projects that need more time to take shape.',
     },
   ];
 
@@ -50,7 +50,7 @@ export default function EngagementScope() {
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
           className="mt-10 sm:mt-14 font-sans text-lg sm:text-xl md:text-2xl text-[#F9F9F9]/85 font-light leading-relaxed max-w-3xl text-center"
         >
-          We operate entirely on fixed-fee scopes. No retainers, no hidden hours. You engage us for exactly what you need to achieve, mapped out into clear, fast-paced timelines.
+          We operate entirely on fixed-fee scopes. No retainers, no hidden hours. We scope each project around what you need to achieve, and set the timeline together from day one.
         </motion.p>
 
         {/* Project Windows Boxes */}

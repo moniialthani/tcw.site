@@ -31,22 +31,12 @@ export default function FloatingLogo() {
           className="absolute -bottom-1 -right-1 w-20 h-10 bg-black/25 blur-[7px] rotate-[10deg] pointer-events-none rounded-full"
         />
 
-        {/* The Actual Sticky Note Surface */}
-        <div className="relative z-10 w-full h-full bg-gradient-to-br from-[#FFFEFA] via-[#FAF7EE] to-[#EFECE0] border border-[#0A0A0A]/15 rounded-[1px] flex items-center justify-center overflow-hidden">
-          {/* Subtle adhesive band sheen at top */}
+        {/* The Actual Sticky Note Surface - Balanced clear crystal glass / sheer frosted vellum */}
+        <div className="relative z-10 w-full h-full bg-white/35 backdrop-blur-md border border-[#0A0A0A]/20 shadow-[0_4px_20px_rgba(0,0,0,0.06),inset_0_1px_2px_rgba(255,255,255,0.7)] rounded-[1px] flex items-center justify-center overflow-hidden">
+          {/* Delicate top adhesive strip */}
           <div
             aria-hidden="true"
-            className="absolute top-0 inset-x-0 h-3.5 bg-black/[0.03] pointer-events-none"
-          />
-
-          <img
-            id="sticky-logo-image"
-            src="/images/logo-sticky.png"
-            alt="this could work?"
-            onLoad={() => setImageLoaded(true)}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 pointer-events-none mix-blend-multiply ${
-              imageLoaded ? 'opacity-90' : 'opacity-70'
-            }`}
+            className="absolute top-0 inset-x-0 h-3 bg-white/25 border-b border-black/[0.06] pointer-events-none"
           />
 
           {/* Permanent Marker typography */}

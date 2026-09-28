@@ -26,10 +26,10 @@ const methods: MethodColumn[] = [
   },
   {
     phase: 'Phase III',
-    duration: 'Dynamic',
-    headline: 'Keeping momentum',
-    body: "While our planned meetings give us the space to review everything properly, the work shouldn't stall if a quick thought comes up. You can always ask for a brief check-in between our main milestones to ensure we stay on the exact same page and keep the project moving forward.",
-    takeaway: 'A fluid, uninterrupted workflow.',
+    duration: 'Connected',
+    headline: 'Bringing it together',
+    body: "We bring the drafts back and go through them with you. Anything that doesn't hold up gets reworked. When it's done, you get the finished strategy and a plan for putting it to use. Between the main meetings, we're always open to a quick call if there's something on your mind.",
+    takeaway: 'Finished work, ready to put into action.',
   },
 ];
 

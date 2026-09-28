@@ -48,7 +48,7 @@ export default function Philosophy() {
               className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] leading-[1.3] tracking-[-0.015em] text-[#0A0A0A] space-y-8"
             >
               <p>
-                Not every project starts with a problem. Sometimes it’s a launch, sometimes it’s a new location, sometimes it’s a pivot into a different market. What ties them together is the same goal: making an impact, not just going through the motions. That’s where we come in, working alongside you with what’s already there and shaping it together to make the impact you’re after.
+                Not every project starts with a problem. Sometimes it’s a launch, sometimes it’s a new location, sometimes it’s a pivot into a different market. In every case, the idea isn't the hard part. Knowing what to do with it is. That’s where we come in, working alongside you with what’s already there and shaping it together to make the impact you’re after.
               </p>
 
               <div className="pt-2">
