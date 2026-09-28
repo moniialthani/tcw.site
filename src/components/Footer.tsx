@@ -10,16 +10,31 @@ export default function Footer() {
           © 2026 This Could Work W.L.L.
         </span>
 
-        {/* Center: Direct Contact Email */}
-        <div className="flex items-center gap-2">
-          <span className="text-[#0A0A0A]/50 uppercase text-[11px]">Direct Inquiries:</span>
-          <a
-            id="footer-email-link"
-            href="mailto:hi@thiscouldwork.co"
-            className="font-medium text-[#0A0A0A] underline underline-offset-4 decoration-[#0A0A0A]/40 hover:decoration-[#0A0A0A] transition-colors"
-          >
-            hi@thiscouldwork.co
-          </a>
+        {/* Center: Direct Contact Email & Instagram */}
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <div className="flex items-center gap-2">
+            <span className="text-[#0A0A0A]/50 uppercase text-[11px]">Direct:</span>
+            <a
+              id="footer-email-link"
+              href="mailto:hi@thiscouldwork.co"
+              className="font-medium text-[#0A0A0A] underline underline-offset-4 decoration-[#0A0A0A]/40 hover:decoration-[#0A0A0A] transition-colors"
+            >
+              hi@thiscouldwork.co
+            </a>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <span className="text-[#0A0A0A]/50 uppercase text-[11px]">Instagram:</span>
+            <a
+              id="footer-instagram-link"
+              href="https://instagram.com/thiscouldwork.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-[#0A0A0A] underline underline-offset-4 decoration-[#0A0A0A]/40 hover:decoration-[#0A0A0A] transition-colors"
+            >
+              @thiscouldwork.co
+            </a>
+          </div>
         </div>
 
         {/* Right: Location & Mandate */}
