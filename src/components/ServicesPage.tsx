@@ -56,18 +56,18 @@ export default function ServicesPage({ onCollaborateClick }: ServicesPageProps) 
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Group Label: Small and quiet above the service name */}
-            <span
+            <h2
               id="label-before-anything-else"
-              className="font-mono text-xs sm:text-[11px] tracking-widest uppercase text-[#0A0A0A]/50 block mb-6"
+              className="font-mono text-xs sm:text-[11px] tracking-widest uppercase text-[#0A0A0A]/50 block mb-6 font-normal"
             >
               {isArabic ? 'نقطة البداية' : 'Before anything else'}
-            </span>
+            </h2>
 
             {/* Service: Research / البحث */}
             <div className="space-y-4 max-w-3xl">
-              <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
+              <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
                 {isArabic ? 'البحث' : 'Research'}
-              </h2>
+              </h3>
               <p className="font-sans text-base sm:text-lg text-[#0A0A0A]/85 leading-relaxed font-light">
                 {isArabic
                   ? 'كل مشروع تقريبًا يبدأ بفهم هويتك كما هي اليوم، وكيف يراها الآخرون. قد يؤكد هذا ما كنت تشعر به من قبل، وقد يلفت نظرك إلى شيء جديد. وفي الحالتين، يكون باقي المشروع مبنيًا على بحث دقيق.'
@@ -90,19 +90,19 @@ export default function ServicesPage({ onCollaborateClick }: ServicesPageProps) 
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Group Label: Small and quiet above the service name */}
-            <span
+            <h2
               id="label-finding-the-direction"
-              className="font-mono text-xs sm:text-[11px] tracking-widest uppercase text-[#0A0A0A]/50 block mb-10"
+              className="font-mono text-xs sm:text-[11px] tracking-widest uppercase text-[#0A0A0A]/50 block mb-10 font-normal"
             >
               {isArabic ? 'تحديد الاتجاه' : 'Finding the direction'}
-            </span>
+            </h2>
 
             <div className="space-y-16 sm:space-y-20 max-w-3xl">
               {/* Positioning / موقعك في السوق */}
               <div className="space-y-4">
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
+                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
                   {isArabic ? 'موقعك في السوق' : 'Positioning'}
-                </h2>
+                </h3>
                 <p className="font-sans text-base sm:text-lg text-[#0A0A0A]/85 leading-relaxed font-light">
                   {isArabic
                     ? 'لا يمكنك أن تتحدث بثقة قبل أن تعرف جمهورك، وسبب اهتمامه بك. تحديد موقعك في السوق يوضح ذلك، فيعرف من تستهدفهم من النظرة الأولى أنك الخيار المناسب لهم. وبعدها تصبح قرارات كثيرة أسهل بكثير، ولهذا هو بداية مناسبة إن شعرت أن الصورة غير واضحة.'
@@ -112,9 +112,9 @@ export default function ServicesPage({ onCollaborateClick }: ServicesPageProps) 
 
               {/* Messaging / الصوت والرسالة */}
               <div className="space-y-4">
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
+                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
                   {isArabic ? 'الصوت والرسالة' : 'Messaging'}
-                </h2>
+                </h3>
                 <p className="font-sans text-base sm:text-lg text-[#0A0A0A]/85 leading-relaxed font-light">
                   {isArabic
                     ? 'تعرف غالبًا ماذا تريد أن تقول، لكن قوله بالطريقة نفسها كل مرة أمر آخر. العمل على الصوت والرسالة يمنحك الكلمات والنبرة لتفعل ذلك، من تعليق صغير على إنستغرام إلى الطريقة التي يرحّب بها فريقك بالناس عند الباب. وهكذا يسهل التعرف عليك ويصعب نسيانك. ونكتب بالعربية والإنجليزية، لتبقى أنت نفسك في اللغتين.'
@@ -124,9 +124,9 @@ export default function ServicesPage({ onCollaborateClick }: ServicesPageProps) 
 
               {/* Naming / اختيار الأسماء */}
               <div className="space-y-4">
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
+                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
                   {isArabic ? 'اختيار الأسماء' : 'Naming'}
-                </h2>
+                </h3>
                 <p className="font-sans text-base sm:text-lg text-[#0A0A0A]/85 leading-relaxed font-light">
                   {isArabic
                     ? 'قد يكون الاسم كلمة واحدة، لكنه يحمل الكثير. يعطي الناس فكرة عنك قبل أن يعرفوك، ويبقى في ذاكرتهم بعد أن يغادروا. سواء كنت تبحث عن اسمك في البداية، أو عن اسم لمنتج أو تجربة جديدة، نختار اسمًا ينسجم مع ما تقدمه ومع جمهورك. ونصوغه ليعمل بالعربية والإنجليزية معًا.'
@@ -136,9 +136,9 @@ export default function ServicesPage({ onCollaborateClick }: ServicesPageProps) 
 
               {/* Identity direction / توجيه الهوية البصرية */}
               <div className="space-y-4">
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
+                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
                   {isArabic ? 'توجيه الهوية البصرية' : 'Identity direction'}
-                </h2>
+                </h3>
                 <p className="font-sans text-base sm:text-lg text-[#0A0A0A]/85 leading-relaxed font-light">
                   {isArabic
                     ? 'قد لا تعرف كيف تصف مشروعك بالكلمات، لكنك تعرف روحه جيدًا. توجيه الهوية البصرية يمنح هذه الروح شكلًا يُرى، يظهر في كل ما يخصك، فيعرف الناس أنه لك من أول نظرة. نحدد نحن الاتجاه، وينفّذه مصممك أو مصمم من شبكتنا الموثوقة.'
@@ -162,19 +162,19 @@ export default function ServicesPage({ onCollaborateClick }: ServicesPageProps) 
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Group Label: Small and quiet above the service name */}
-            <span
+            <h2
               id="label-bringing-it-to-life"
-              className="font-mono text-xs sm:text-[11px] tracking-widest uppercase text-[#0A0A0A]/50 block mb-10"
+              className="font-mono text-xs sm:text-[11px] tracking-widest uppercase text-[#0A0A0A]/50 block mb-10 font-normal"
             >
               {isArabic ? 'من الفكرة إلى الواقع' : 'Bringing it to life'}
-            </span>
+            </h2>
 
             <div className="space-y-16 sm:space-y-20 max-w-3xl">
               {/* Social content / المحتوى */}
               <div className="space-y-4">
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
+                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
                   {isArabic ? 'المحتوى' : 'Social content'}
-                </h2>
+                </h3>
                 <p className="font-sans text-base sm:text-lg text-[#0A0A0A]/85 leading-relaxed font-light">
                   {isArabic
                     ? 'قبل أن يزورك أحد أو يشتري منك، غالبًا ما يمرّ على حسابك في إنستغرام. لكن الحساب الذي لا يعرض سوى المنتجات يتحول إلى كتالوج، يُتصفح ولا يُتابع. المحتوى يعطي الناس سببًا للمتابعة، بمنشورات تعرّفهم عليك كما تعرّفهم على منتجاتك. نخطط له على شكل باقات مع جدول نشر مقترح، ونسلمك الخطة أو ننفذ المنشورات والريلز بأنفسنا.'
@@ -184,9 +184,9 @@ export default function ServicesPage({ onCollaborateClick }: ServicesPageProps) 
 
               {/* Launch strategy / تخطيط الإطلاق */}
               <div className="space-y-4">
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
+                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
                   {isArabic ? 'تخطيط الإطلاق' : 'Launch strategy'}
-                </h2>
+                </h3>
                 <div className="space-y-4 font-sans text-base sm:text-lg text-[#0A0A0A]/85 leading-relaxed font-light">
                   <p>
                     {isArabic
@@ -203,9 +203,9 @@ export default function ServicesPage({ onCollaborateClick }: ServicesPageProps) 
 
               {/* Customer experience / انطباع العميل */}
               <div className="space-y-4">
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
+                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
                   {isArabic ? 'انطباع العميل' : 'Customer experience'}
-                </h2>
+                </h3>
                 <p className="font-sans text-base sm:text-lg text-[#0A0A0A]/85 leading-relaxed font-light">
                   {isArabic
                     ? 'فكّر في مكان تعود إليه دائمًا، لا لشيء إلا لأنك ترتاح فيه. هذا الشعور لا يأتي صدفة، بل من تفاصيل صغيرة كأجواء المكان وطريقة استقبالك. وهذه التفاصيل تحديدًا هي ما نعمل عليه معك، لأنها ما يجعل الناس يعودون إليك ويتحدثون عنك.'
@@ -215,9 +215,9 @@ export default function ServicesPage({ onCollaborateClick }: ServicesPageProps) 
 
               {/* Execution oversight / متابعة التنفيذ */}
               <div className="space-y-4">
-                <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
+                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-normal tracking-[-0.02em]">
                   {isArabic ? 'متابعة التنفيذ' : 'Execution oversight'}
-                </h2>
+                </h3>
                 <p className="font-sans text-base sm:text-lg text-[#0A0A0A]/85 leading-relaxed font-light">
                   {isArabic
                     ? 'بعد أن تكتمل الاستراتيجية، يبقى من ينفذها، وغالبًا ما يكون فريقك أو شركة تتعاون معها. ونتابع عملهم خطوة بخطوة، ونصحح الاتجاه أولًا بأول إذا ابتعد عما اتفقنا عليه، حتى تكون النتيجة مطابقة للخطة.'

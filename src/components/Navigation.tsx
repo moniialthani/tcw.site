@@ -106,7 +106,17 @@ export default function Navigation({
           >
             <button
               type="button"
-              onClick={() => setLang('en')}
+              onClick={() => {
+                setLang('en');
+                if (typeof window !== 'undefined') {
+                  const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
+                  if (pathname.includes('/services')) {
+                    window.history.pushState(null, '', '/services/');
+                  } else {
+                    window.history.pushState(null, '', '/');
+                  }
+                }
+              }}
               className={`py-0.5 px-1 cursor-pointer transition-opacity ${
                 !isArabic ? 'font-bold text-[#0A0A0A]' : 'text-[#0A0A0A]/50 hover:text-[#0A0A0A]'
               }`}
@@ -117,7 +127,17 @@ export default function Navigation({
             <span className="text-[#0A0A0A]/40 mx-0.5">|</span>
             <button
               type="button"
-              onClick={() => setLang('ar')}
+              onClick={() => {
+                setLang('ar');
+                if (typeof window !== 'undefined') {
+                  const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
+                  if (pathname.includes('/services')) {
+                    window.history.pushState(null, '', '/ar/services/');
+                  } else {
+                    window.history.pushState(null, '', '/ar/');
+                  }
+                }
+              }}
               className={`py-0.5 px-1 cursor-pointer transition-opacity font-sans text-xs sm:text-[13px] ${
                 isArabic ? 'font-bold text-[#0A0A0A]' : 'text-[#0A0A0A]/50 hover:text-[#0A0A0A]'
               }`}

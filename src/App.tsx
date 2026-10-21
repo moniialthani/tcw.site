@@ -11,20 +11,32 @@ import IntakeForm from './components/IntakeForm';
 import ServicesPage from './components/ServicesPage';
 import Footer from './components/Footer';
 
-export default function App() {
+import type { Language } from './context/LanguageContext';
+
+interface AppProps {
+  initialPage?: 'home' | 'services';
+  initialLang?: Language;
+}
+
+export default function App({ initialPage, initialLang }: AppProps) {
   const [currentPage, setCurrentPage] = useState<'home' | 'services'>(() => {
+    if (initialPage) return initialPage;
     if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
+      if (pathname.endsWith('/services')) return 'services';
       const hash = window.location.hash;
       if (hash === '#services') return 'services';
     }
     return 'home';
   });
 
-  // Listen to hash changes (e.g., browser back/forward or direct URLs)
+  // Listen to hash and popstate changes
   useEffect(() => {
-    const handleHashChange = () => {
+    const handleLocationChange = () => {
+      const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
       const hash = window.location.hash;
-      if (hash === '#services') {
+
+      if (pathname.endsWith('/services') || hash === '#services') {
         setCurrentPage('services');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else if (hash === '#intake' || hash === '#collaborate') {
@@ -38,23 +50,39 @@ export default function App() {
       }
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    window.addEventListener('popstate', handleLocationChange);
+    return () => {
+      window.removeEventListener('hashchange', handleLocationChange);
+      window.removeEventListener('popstate', handleLocationChange);
+    };
   }, []);
 
   const handleNavigate = (page: 'home' | 'services') => {
     setCurrentPage(page);
-    if (page === 'services') {
-      window.history.pushState(null, '', '#services');
-    } else {
-      window.history.pushState(null, '', window.location.pathname);
+    if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
+      const isArabicPath = pathname.startsWith('/ar');
+
+      if (page === 'services') {
+        const targetUrl = isArabicPath ? '/ar/services/' : '/services/';
+        window.history.pushState(null, '', targetUrl);
+      } else {
+        const targetUrl = isArabicPath ? '/ar/' : '/';
+        window.history.pushState(null, '', targetUrl);
+      }
     }
   };
 
   const handleCollaborate = () => {
     if (currentPage !== 'home') {
       setCurrentPage('home');
-      window.history.pushState(null, '', '#intake');
+      if (typeof window !== 'undefined') {
+        const pathname = window.location.pathname.replace(/\/+$/, '') || '/';
+        const isArabicPath = pathname.startsWith('/ar');
+        const targetUrl = (isArabicPath ? '/ar/' : '/') + '#intake';
+        window.history.pushState(null, '', targetUrl);
+      }
       setTimeout(() => {
         const intakeEl = document.getElementById('intake');
         if (intakeEl) {
@@ -70,7 +98,7 @@ export default function App() {
   };
 
   return (
-    <LanguageProvider>
+    <LanguageProvider initialLang={initialLang}>
       <div className="min-h-screen bg-[#F9F9F9] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F9F9F9] relative overflow-x-hidden flex flex-col justify-between">
         {/* 00. Global Navigation with Services link */}
         <Navigation

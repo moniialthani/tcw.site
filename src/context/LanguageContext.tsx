@@ -13,8 +13,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 const STORAGE_KEY = 'tcw_preferred_lang';
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const LanguageProvider: React.FC<{
+  children: React.ReactNode;
+  initialLang?: Language;
+}> = ({ children, initialLang }) => {
   const [lang, setLangState] = useState<Language>(() => {
+    if (initialLang) return initialLang;
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved === 'en' || saved === 'ar') {

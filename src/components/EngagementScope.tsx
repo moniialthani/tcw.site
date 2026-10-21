@@ -115,9 +115,9 @@ export default function EngagementScope() {
                     ({item.timeframe})
                   </span>
                 </div>
-                <h4 className="font-serif text-lg sm:text-xl text-white font-medium mb-2.5">
+                <h3 className="font-serif text-lg sm:text-xl text-white font-medium mb-2.5">
                   {item.title}
-                </h4>
+                </h3>
                 <p className="text-xs sm:text-[13px] font-sans text-white/75 leading-relaxed font-light">
                   {item.detail}
                 </p>

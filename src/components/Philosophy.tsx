@@ -20,12 +20,12 @@ export default function Philosophy() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* The exact requested technical label */}
-            <span
+            <h2
               id="philosophy-label"
               className="font-mono text-xs sm:text-sm tracking-widest uppercase text-[#0A0A0A] font-medium block"
             >
               {isArabic ? 'تقديم الطبق' : '"Plate the Dish"'}
-            </span>
+            </h2>
 
             <p className="mt-6 text-sm text-[#0A0A0A]/60 font-sans leading-relaxed max-w-sm">
               {isArabic
