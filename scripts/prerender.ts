@@ -60,8 +60,15 @@ const structuredData = [
     '@context': 'https://schema.org',
     '@type': 'Organization',
     'name': 'This Could Work',
+    'legalName': 'This Could Work W.L.L.',
     'url': 'https://thiscouldwork.co',
     'email': 'hi@thiscouldwork.co',
+    'taxID': '251358',
+    'identifier': {
+      '@type': 'PropertyValue',
+      'name': 'Commercial Registration',
+      'value': '251358',
+    },
     'address': {
       '@type': 'PostalAddress',
       'addressLocality': 'Doha',

@@ -9,10 +9,19 @@ export default function Footer() {
       className="w-full border-t border-[#0A0A0A] bg-[#F9F9F9] py-10 px-6 sm:px-12 lg:px-20"
     >
       <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-xs sm:text-[13px] text-[#0A0A0A] tracking-wider">
-        {/* Left: Copyright - Kept in English in both versions as instructed */}
-        <span id="footer-copyright">
-          <bdi dir="ltr">© 2026 This Could Work W.L.L.</bdi>
-        </span>
+        {/* Left: Copyright & CR Number */}
+        <div id="footer-copyright" className="flex flex-col items-center md:items-start gap-1">
+          <span>
+            <bdi dir="ltr">© 2026 This Could Work W.L.L.</bdi>
+          </span>
+          <span className="text-[11px] font-mono text-[#0A0A0A]/50 tracking-widest uppercase">
+            {isArabic ? (
+              <span>س.ت: <bdi dir="ltr">251358</bdi></span>
+            ) : (
+              <span>CR: 251358</span>
+            )}
+          </span>
+        </div>
 
         {/* Center: Direct Contact Email & Instagram */}
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
