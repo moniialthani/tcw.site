@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { LanguageProvider } from './context/LanguageContext';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import Navigation from './components/Navigation';
 import FloatingLogo from './components/FloatingLogo';
 import Hero from './components/Hero';
@@ -10,7 +10,6 @@ import EngagementScope from './components/EngagementScope';
 import IntakeForm from './components/IntakeForm';
 import ServicesPage from './components/ServicesPage';
 import Footer from './components/Footer';
-
 import type { Language } from './context/LanguageContext';
 
 interface AppProps {
@@ -99,6 +98,7 @@ export default function App({ initialPage, initialLang }: AppProps) {
 
   return (
     <LanguageProvider initialLang={initialLang}>
+      <TitleManager currentPage={currentPage} />
       <div className="min-h-screen bg-[#F9F9F9] text-[#0A0A0A] selection:bg-[#0A0A0A] selection:text-[#F9F9F9] relative overflow-x-hidden flex flex-col justify-between">
         {/* 00. Global Navigation with Services link */}
         <Navigation
@@ -141,4 +141,24 @@ export default function App({ initialPage, initialLang }: AppProps) {
       </div>
     </LanguageProvider>
   );
+}
+
+function TitleManager({ currentPage }: { currentPage: 'home' | 'services' }) {
+  const { isArabic } = useLanguage();
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+
+    if (currentPage === 'services') {
+      document.title = isArabic
+        ? 'الخدمات | This Could Work للاستشارات الاستراتيجية'
+        : 'Services | This Could Work, Brand Strategy Consultancy';
+    } else {
+      document.title = isArabic
+        ? 'This Could Work | استشارات استراتيجية وتسويقية'
+        : 'This Could Work | Brand Strategy Consultancy';
+    }
+  }, [currentPage, isArabic]);
+
+  return null;
 }
