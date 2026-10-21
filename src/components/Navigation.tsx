@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
-export default function Navigation() {
+interface NavigationProps {
+  currentPage: 'home' | 'services';
+  onNavigate: (page: 'home' | 'services') => void;
+  onCollaborate: () => void;
+}
+
+export default function Navigation({
+  currentPage,
+  onNavigate,
+  onCollaborate,
+}: NavigationProps) {
   const [scrolled, setScrolled] = useState(false);
-  const { lang, setLang, isArabic } = useLanguage();
+  const { setLang, isArabic } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,12 +23,21 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleScrollToIntake = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleServicesClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const element = document.getElementById('intake');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    onNavigate('services');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onNavigate('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleCollaborateClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onCollaborate();
   };
 
   return (
@@ -29,23 +48,49 @@ export default function Navigation() {
       } border-b border-[#0A0A0A]`}
     >
       <div className="w-full px-6 sm:px-12 lg:px-20 h-14 flex items-center justify-between">
-        {/* Anchored Start: Crisp monospace CTA link */}
-        <a
-          id="nav-intake-link"
-          href="#intake"
-          onClick={handleScrollToIntake}
-          className="group relative inline-flex items-center text-xs sm:text-[13px] font-mono tracking-wider uppercase text-[#0A0A0A] py-1 cursor-pointer"
-        >
-          <span>{isArabic ? 'تواصل معنا ←' : 'COLLABORATE →'}</span>
-          <span className="absolute bottom-0 left-0 right-0 w-0 h-[1px] bg-[#0A0A0A] transition-all duration-300 ease-out group-hover:w-full" />
-        </a>
+        {/* Side 1: Action Nav Links (Services, then Collaborate) */}
+        <div className="flex items-center gap-6 sm:gap-8">
+          {/* Services Page Link */}
+          <button
+            type="button"
+            id="nav-services-link"
+            onClick={handleServicesClick}
+            className={`group relative inline-flex items-center text-xs sm:text-[13px] font-mono tracking-wider uppercase py-1 cursor-pointer transition-colors ${
+              currentPage === 'services'
+                ? 'text-[#0A0A0A] font-bold'
+                : 'text-[#0A0A0A]/70 hover:text-[#0A0A0A]'
+            }`}
+          >
+            <span>{isArabic ? 'الخدمات' : 'SERVICES'}</span>
+            <span
+              className={`absolute bottom-0 left-0 right-0 h-[1px] bg-[#0A0A0A] transition-all duration-300 ease-out ${
+                currentPage === 'services' ? 'w-full' : 'w-0 group-hover:w-full'
+              }`}
+            />
+          </button>
 
-        {/* Right side items: Studio name, Strategic intervention label, and Language Toggle */}
+          {/* Collaborate Link */}
+          <button
+            type="button"
+            id="nav-intake-link"
+            onClick={handleCollaborateClick}
+            className="group relative inline-flex items-center text-xs sm:text-[13px] font-mono tracking-wider uppercase text-[#0A0A0A] py-1 cursor-pointer"
+          >
+            <span>{isArabic ? 'تواصل معنا ←' : 'COLLABORATE →'}</span>
+            <span className="absolute bottom-0 left-0 right-0 w-0 h-[1px] bg-[#0A0A0A] transition-all duration-300 ease-out group-hover:w-full" />
+          </button>
+        </div>
+
+        {/* Side 2: Studio name, Strategic intervention label, and Language Toggle anchored to the corner */}
         <div className="flex items-center gap-4 sm:gap-6 text-xs font-mono tracking-widest text-[#0A0A0A]/60 uppercase">
-          {/* Studio branding kept in English */}
-          <span className="hidden sm:inline">
+          {/* Studio branding kept in English - clicking returns to home */}
+          <button
+            type="button"
+            onClick={handleLogoClick}
+            className="hidden sm:inline hover:text-[#0A0A0A] transition-colors cursor-pointer"
+          >
             <bdi dir="ltr">This Could Work</bdi>
-          </span>
+          </button>
           <span className="hidden md:inline text-[#0A0A0A]/30">•</span>
           <span className="text-[11px] sm:text-xs">
             {isArabic ? 'استراتيجية وإبداع' : 'STRATEGIC INTERVENTION'}
@@ -53,7 +98,7 @@ export default function Navigation() {
 
           <span className="text-[#0A0A0A]/30">•</span>
 
-          {/* Minimalist Language Toggle: EN | ع */}
+          {/* Minimalist Language Toggle: EN | ع anchored at the corner */}
           <div
             id="language-toggle"
             className="inline-flex items-center text-[11px] sm:text-xs font-mono text-[#0A0A0A] select-none"
