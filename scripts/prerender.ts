@@ -7,7 +7,7 @@ import App from '../src/App';
 interface PageDef {
   path: string;
   lang: 'en' | 'ar';
-  page: 'home' | 'services';
+  page: 'home' | 'services' | 'work';
   title: string;
   description: string;
   canonicalUrl: string;
@@ -21,6 +21,14 @@ const pages: PageDef[] = [
     title: 'This Could Work | Brand Strategy Consultancy',
     description: 'A brand strategy consultancy in Doha, working with founders on positioning, messaging and identity.',
     canonicalUrl: 'https://thiscouldwork.co/',
+  },
+  {
+    path: 'work/index.html',
+    lang: 'en',
+    page: 'work',
+    title: 'Work | This Could Work, Brand Strategy Consultancy',
+    description: 'Selected work from This Could Work, a brand strategy consultancy in Doha, including website, copy, brand assets and launch strategy.',
+    canonicalUrl: 'https://thiscouldwork.co/work/',
   },
   {
     path: 'services/index.html',
@@ -37,6 +45,14 @@ const pages: PageDef[] = [
     title: 'This Could Work | استشارات استراتيجية وتسويقية',
     description: 'استوديو استشاري لاستراتيجية الهوية في الدوحة، يعمل مع المؤسسين على تحديد الموقع، الصوت والرسالة، والهوية البصرية.',
     canonicalUrl: 'https://thiscouldwork.co/ar/',
+  },
+  {
+    path: 'ar/work/index.html',
+    lang: 'ar',
+    page: 'work',
+    title: 'الأعمال | This Could Work للاستشارات الاستراتيجية',
+    description: 'أعمال مختارة من This Could Work، استشارات استراتيجية الهوية والتسويق في الدوحة، تشمل المواقع الإلكترونية، النصوص، أصول الهوية، وتخطيط الإطلاق.',
+    canonicalUrl: 'https://thiscouldwork.co/ar/work/',
   },
   {
     path: 'ar/services/index.html',
@@ -175,6 +191,14 @@ async function prerender() {
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://thiscouldwork.co/work/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://thiscouldwork.co/work/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thiscouldwork.co/ar/work/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://thiscouldwork.co/work/" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://thiscouldwork.co/services/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://thiscouldwork.co/services/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://thiscouldwork.co/ar/services/" />
@@ -188,6 +212,13 @@ async function prerender() {
     <xhtml:link rel="alternate" hreflang="en" href="https://thiscouldwork.co/" />
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thiscouldwork.co/ar/work/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://thiscouldwork.co/ar/work/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://thiscouldwork.co/work/" />
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://thiscouldwork.co/ar/services/</loc>
